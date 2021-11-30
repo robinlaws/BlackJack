@@ -21,7 +21,7 @@ def deal_cards(deck, players):
     if len(deck)>((players+1)*2):
 
 ##First cards dealt:
-        deal = input("\n---Press enter to deal cards----")
+        deal = input("\n----------------PRESS ENTER TO DEAL THE CARDS-----------------------")
         for i in range(0,players):
             card = deck[0]
             print("\nPlayer " + str(i+1) + ": " + str(card[0]) + " of " + str(card[1]))

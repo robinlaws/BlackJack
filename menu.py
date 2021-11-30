@@ -9,7 +9,7 @@ def menu():
     if rules.lower() == "y":
         blackjack_rules()
     if rules.lower() == "n":
-        print("Good Luck!")
+        print("\n                       GOOD LUCK!")
 
 
     
@@ -27,12 +27,30 @@ def blackjack_rules():
     print("\n\n\t\t\tGOOD LUCK\n\n")
 
 def get_players():
-    players = int(input("\nPlease enter the number of players (1-5): "))
-    return players
+    while True:
+        try:
+            players = int(input("\n\nPlease enter the number of players (1-5): "))
+            if players > 5 or players < 0:
+                print("Please enter a number between 1 and 5.")
+                continue
+            else:
+                return players
+                break
+        except ValueError:
+            print("Not a valid number.")
 
 def get_balance():
-    balance = int(input("\nPlease enter starting balance for players (0-1000): "))
-    return balance
+    while True:
+        try:
+            balance = int(input("\nPlease enter starting balance for players (1-1000): "))
+            if balance > 1000 or balance <= 0:
+                print("Please enter a number between 1 and 1000.")
+                continue
+            else:
+                return balance
+                break
+        except ValueError:
+            print("Not a valid number.")
 
 def get_player_list(players, balance):
     player_list = []
@@ -41,14 +59,31 @@ def get_player_list(players, balance):
     return player_list
     
 
+def check_balance(player):
+    i=0
+    while i==0:
+        try:
+            bet = int(input("\nPLAYER " + str(player[0]) + " Place your bet: "))
+            if bet > player[1]:
+                print("You do not have enough to make this bet. Your current balance is: " + str(player[1]))
+            elif bet < 5 or bet > 1000:
+                print("Bet value must be between 5 and 1000.")
+            else:
+                return bet
+                i+=1
+        except ValueError:
+            print("Not a valid number.")
+
+
 def place_bets(player_list):
-    for i in range (0, len(player_list)):
-        bet = int(input("\nPlayer " + str(i+1) + ": Place your bet.(MIN 5 MAX 1000): "))
-        new_balance = player_list[i][1] - bet
-        player_list[i][1] = new_balance
-        print(player_list)
-    
+    print("\n----------------------PLACE YOUR BETS-------------------------------")
+    print("---------------------MINIMUM: 5 MAX: 1000---------------------------")
+    for player in player_list:
+        bet = check_balance(player)
+        new_balance = player[1] - bet
+        player[1] = new_balance
         
+
 def clear_players(player_list):
     for player in player_list:
         player[2] == 0
