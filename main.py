@@ -27,7 +27,7 @@ def main():
     dealer_score_2 = dealer.dealer_hand(dealer_score, deck)
 
     winner.get_player_points(player_list)
-    winner.get_winner(player_list, dealer_score_2)
+    winner.get_winner(player_list, dealer_score_2,players)
     
 
 

@@ -1,14 +1,16 @@
 def dealer_hand(dealer_score, deck):
     if dealer_score >= 17:
-        print("\nDealer will STAY at " + dealer_score)
+        print("\nDealer will STAY at " + str(dealer_score))
     while dealer_score < 17:
         card = deck[0]
         print("\nDealer will HIT")
         print("Dealers card: " + card[0] + " of " + card[1])
         points = card_values(card[0], dealer_score)
         dealer_score += points
+        deck.remove(card)
         if dealer_score > 21:
             print("The dealer has BUSTED.")
+    print("-----------------------------------------------------------")
     print("\nDealer score is: " + str(dealer_score))
     return dealer_score
 
