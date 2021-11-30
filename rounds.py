@@ -15,7 +15,7 @@ def round(deck, player_list, players):
 
 def play(player, deck):
     score = int(player[2])
-    print("--------------------------------------------------------------")
+    print("-------------------------------------------------------------------")
     print("\nPlayer " + str(player[0]) + ": You have " + str(score))
     stop = 0
     while stop == 0:
