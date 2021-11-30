@@ -49,7 +49,7 @@ def place_bets(player_list):
         print(player_list)
     
         
-        
-    
-
+def clear_players(player_list):
+    for player in player_list:
+        player[2] == 0
 
