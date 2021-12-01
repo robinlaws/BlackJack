@@ -18,7 +18,7 @@ def menu():
 def blackjack_rules():
     print("\nBLACKJACK RULES")
     print("Each participant attempts to beat the dealer by getting a count as close to 21 \nas possible, without going over 21.")
-    print("It is up to the player if ace is worth 1 or 11. \nJack Queen King are worth 10. All other cards are number value.")
+    print("Ace can be worth 1 or 11, depending on your score. \nJack Queen King are worth 10. All other cards are number value.")
     print("\nPlace your bet. (Minimum bet is 5$. Maximum bet is 1000$).")
     print("\n\tIf the dealer has 21, all bets go to dealer.\n\tIf player has 21, you recieve 1.5 times your bet.")
     print("\tIf both have 21, it is a tie and you keep your bet.")
@@ -87,9 +87,7 @@ def place_bets(player_list):
         player.append(bet)
 
 
-def update_player_list(player_list):
-    player_list = [player for player in player_list if player[1]!=0]
-    return player_list
+
 
         
         

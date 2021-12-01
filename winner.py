@@ -68,6 +68,10 @@ def update_balance_win(player):
 def zero_balance(player):
     if player[1] == 0:
         print("You are out of the game, better luck next time!")
+
+def update_player_list(player_list):
+    player_list = [player for player in player_list if player[1]!=0]
+    return player_list
     
             
             

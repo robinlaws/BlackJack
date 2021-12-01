@@ -35,7 +35,7 @@ def main():
 
 
 ##Update player list for players out of money
-        player_list = menu.update_player_list(player_list)
+        player_list = winner.update_player_list(player_list)
         if len(player_list) == 0:
             print("\n\nALL PLAYERS ARE OUT OF MONEY. Thanks for playing! Please gamble responsibly")
             sys.exit()
@@ -47,6 +47,7 @@ def main():
         if choice.lower() == "n":
             break
     print("\nThanks for playing BlackJack! \nPlease gamble responsibly.")
+    print("PLEASE GAMBLE RESPONSIBLY")
 
     
 
