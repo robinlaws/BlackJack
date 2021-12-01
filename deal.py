@@ -16,12 +16,12 @@ def fill_deck(deck):
 def shuffle(deck):
     random.shuffle(deck)
 
-def deal_cards(deck, players):
+def deal_cards(deck, player_list):
     cards_dealt = []
 
 ##First cards dealt:
     deal = input("\n----------------PRESS ENTER TO DEAL THE CARDS-----------------------")
-    for i in range(0,players):
+    for i in range(0,len(player_list)):
         card = deck[0]
         print("\nPlayer " + str(i+1) + ": " + str(card[0]) + " of " + str(card[1]))
         cards_dealt.append(card)
@@ -35,9 +35,9 @@ def deal_cards(deck, players):
     deal = input()
 
 ##Second cards dealt:
-    for i in range(1,players+1):
+    for i in range(0,len(player_list)):
         card = deck[0]
-        print("\nPlayer " + str(i) + ": " + str(card[0]) + " of " + str(card[1]))
+        print("\nPlayer " + str(i+1) + ": " + str(card[0]) + " of " + str(card[1]))
         cards_dealt.append(card)
         deck.remove(card)
         deal = input()

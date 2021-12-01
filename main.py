@@ -20,7 +20,7 @@ def main():
         deck = []
         deal.fill_deck(deck)
         deal.shuffle(deck)
-        cards_dealt = deal.deal_cards(deck, players)
+        cards_dealt = deal.deal_cards(deck, player_list)
         deal.assign_cards(cards_dealt,players,player_list)
 
     ##Go into round for player (hit or stay) then dealer hand

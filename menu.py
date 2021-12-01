@@ -80,13 +80,14 @@ def place_bets(player_list):
     print("---------------------MINIMUM: 5 MAX: 1000---------------------------")
     for player in player_list:
         if player[1] == 0:
-            print("You don't have any money left. Better luck next time!")
+            print("Player " + str(player[0]) + " You don't have any money left. Better luck next time!")
             player_list.remove(player)
-        bet = check_balance(player)
-        new_balance = player[1] - bet
-        player[1] = new_balance
-        player.append(bet)
-        print(player_list)
+        else:
+            bet = check_balance(player)
+            new_balance = player[1] - bet
+            player[1] = new_balance
+            player.append(bet)
+            print(player_list)
         
 
 def clear_players(player_list):
