@@ -2,7 +2,7 @@
 
 """This module contains the first round where the player will hit or stay."""
 
-def round(deck, player_list, players):
+def round(deck, player_list):
     i=0
     for player in player_list:
         if player_list[i][2] == 21:

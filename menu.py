@@ -1,15 +1,17 @@
 ##Blackjack Menu
+
+import sys
 """This module containts the menu and rules for blackjack. It will also get
 number of placers and starting balance for all players. These will be stored
-in a list for each player : [player#, balance, score]."""
+in a list for each player : [player#, balance, score, bet]."""
 
 def menu():
-    print("Welcome to BlackJack")
+    print("-----------------------Welcome to BlackJack----------------------------")
     rules = input("\nWould you like to see the rules before you play? (y/n): ")
     if rules.lower() == "y":
         blackjack_rules()
     if rules.lower() == "n":
-        print("\n                       GOOD LUCK!")
+        print("\n                           GOOD LUCK!")
 
 
     
@@ -79,15 +81,17 @@ def place_bets(player_list):
     print("\n----------------------PLACE YOUR BETS-------------------------------")
     print("---------------------MINIMUM: 5 MAX: 1000---------------------------")
     for player in player_list:
-        if player[1] == 0:
-            print("Player " + str(player[0]) + " You don't have any money left. Better luck next time!")
-            player_list.remove(player)
-        else:
-            bet = check_balance(player)
-            new_balance = player[1] - bet
-            player[1] = new_balance
-            player.append(bet)
-            print(player_list)
+        bet = check_balance(player)
+        new_balance = player[1] - bet
+        player[1] = new_balance
+        player.append(bet)
+
+
+def update_player_list(player_list):
+    player_list = [player for player in player_list if player[1]!=0]
+    return player_list
+
+        
         
 
 def clear_players(player_list):
@@ -97,5 +101,5 @@ def clear_players(player_list):
 def clear_bets(player_list):
     for player in player_list:
         player.pop(3)
-        print(player_list)
+
 
