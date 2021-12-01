@@ -18,41 +18,35 @@ def shuffle(deck):
 
 def deal_cards(deck, players):
     cards_dealt = []
-    if len(deck)>((players+1)*2):
 
 ##First cards dealt:
-        deal = input("\n----------------PRESS ENTER TO DEAL THE CARDS-----------------------")
-        for i in range(0,players):
-            card = deck[0]
-            print("\nPlayer " + str(i+1) + ": " + str(card[0]) + " of " + str(card[1]))
-            cards_dealt.append(card)
-            deck.remove(card)
-            deal=input()
-        dealer_card = deck[0]
-        print("\nDealers card face down.\n")
-        print(dealer_card)
-        cards_dealt.append(dealer_card)
-        deck.remove(dealer_card)
-        deal = input()
+    deal = input("\n----------------PRESS ENTER TO DEAL THE CARDS-----------------------")
+    for i in range(0,players):
+        card = deck[0]
+        print("\nPlayer " + str(i+1) + ": " + str(card[0]) + " of " + str(card[1]))
+        cards_dealt.append(card)
+        deck.remove(card)
+        deal=input()
+    dealer_card = deck[0]
+    print("\nDealers card face down.\n")
+    print(dealer_card)
+    cards_dealt.append(dealer_card)
+    deck.remove(dealer_card)
+    deal = input()
 
 ##Second cards dealt:
-        for i in range(1,players+1):
-            card = deck[0]
-            print("\nPlayer " + str(i) + ": " + str(card[0]) + " of " + str(card[1]))
-            cards_dealt.append(card)
-            deck.remove(card)
-            deal = input()
-        dealer_card = deck[0]
-
-        print("\nDealers card: " + str(dealer_card[0]) + " of " + str(dealer_card[1]))
-        cards_dealt.append(dealer_card)
-        deck.remove(dealer_card)
+    for i in range(1,players+1):
+        card = deck[0]
+        print("\nPlayer " + str(i) + ": " + str(card[0]) + " of " + str(card[1]))
+        cards_dealt.append(card)
+        deck.remove(card)
         deal = input()
+    dealer_card = deck[0]
 
-    else:
-        print("Not enough cards in deck. Reshuffling.")
-        fill_deck()
-        shuffle(deck)
+    print("\nDealers card: " + str(dealer_card[0]) + " of " + str(dealer_card[1]))
+    cards_dealt.append(dealer_card)
+    deck.remove(dealer_card)
+    deal = input()
 
     return cards_dealt
 

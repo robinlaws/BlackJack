@@ -31,8 +31,10 @@ def main():
     ##Compare scores and get winners
         winner.get_player_points(player_list)
         winner.get_winner(player_list, dealer_score_2,players)
+        print(player_list)
 
         choice = input("\nWould you like to play again? (y/n): ")
+        menu.clear_bets(player_list)
         if choice.lower() == "n":
             break
     print("\nThanks for playing BlackJack!")
