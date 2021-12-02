@@ -11,7 +11,7 @@ def get_winner(player_list, dealer_score,players):
         print("\nDEALER HAS BLACKJACK.")
         for player in player_list:
             if player[2] == 21:
-                print("\nPlayer " + str(player[0]) + " TIE GAME")
+                print("\nPlayer " + str(player[0]) + " TIE")
                 update_balance_tie(player)
             elif player[2] != 21:
                 print("\nPlayer " + str(player[0]) + " LOSES.")
@@ -23,11 +23,11 @@ def get_winner(player_list, dealer_score,players):
         for player in player_list:
             if player[2] == 21:
                 if dealer_score== 21:
-                    print("\nPlayer " + str(player[0]) + "TIE.")
+                    print("\nPlayer " + str(player[0]) + " TIE.")
                     update_balance_tie(player)
                 else:
-                    print("\nPlayer " + str(player[0]) + " WINNER")
-                    update_balance_win(player)
+                    print("\nPlayer " + str(player[0]) + " HAS BLACKJACK")
+                    update_balance_21(player)
 
             elif player[2] < 21 and dealer_score < 21:
                 if 21 - player[2] < 21 - dealer_score:
@@ -62,6 +62,12 @@ def update_balance_tie(player):
 def update_balance_win(player):
     bet = player[3]
     new_balance = (bet*2) + player[1]
+    player[1] = new_balance
+    print("Balance: " + str(new_balance))
+
+def update_balance_21(player):
+    bet=player[3]
+    new_balance = (bet*2.5) + player[1]
     player[1] = new_balance
     print("Balance: " + str(new_balance))
 
