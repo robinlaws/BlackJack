@@ -7,11 +7,16 @@ in a list for each player : [player#, balance, score, bet]."""
 
 def menu():
     print("-----------------------Welcome to BlackJack----------------------------")
-    rules = input("\nWould you like to see the rules before you play? (y/n): ")
-    if rules.lower() == "y":
-        blackjack_rules()
-    if rules.lower() == "n":
-        print("\n                           GOOD LUCK!")
+    while True:
+        rules = input("\nWould you like to see the rules before you play? (y/n): ")
+        if rules.lower() == "y":
+            blackjack_rules()
+            break
+        elif rules.lower() == "n":
+            print("\n                           GOOD LUCK!")
+            break
+        else:
+            print("Please choose yes or no.")
 
 
     
@@ -45,8 +50,8 @@ def get_balance():
     while True:
         try:
             balance = int(input("\nPlease enter starting balance for players (1-1000): "))
-            if balance > 1000 or balance <= 0:
-                print("Please enter a number between 1 and 1000.")
+            if balance > 1000 or balance < 5:
+                print("Please enter a number between 5 and 1000.")
                 continue
             else:
                 return balance

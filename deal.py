@@ -26,26 +26,28 @@ def deal_cards(deck, player_list):
         print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
         cards_dealt.append(card)
         deck.remove(card)
-        deal=input()
+
     dealer_card = deck[0]
-    print("\nDealers card face down.\n")
+    print("\nDealers card:  ?????????")
     cards_dealt.append(dealer_card)
     deck.remove(dealer_card)
-    deal = input()
+
 
 ##Second cards dealt:
+    deal = input("\n----------------PRESS ENTER TO DEAL SECOND CARD-----------------------")
     for player in player_list:
         card = deck[0]
         print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
         cards_dealt.append(card)
         deck.remove(card)
-        deal = input()
+
     dealer_card = deck[0]
 
     print("\nDealers card: " + str(dealer_card[0]) + " of " + str(dealer_card[1]))
+    print("-------------------------------------------------------------------------------")
     cards_dealt.append(dealer_card)
     deck.remove(dealer_card)
-    deal = input()
+
 
     return cards_dealt
 
@@ -57,13 +59,13 @@ def assign_cards(cards_dealt, player_list):
         players+=1
         score = card_values(player_hand, player[2])
         player_list[i][2] = score
-        print("Player " + str(player[0]) + " Score: " + str(score))
+        print("\nPlayer " + str(player[0]) + " Score: " + str(score))
         i+=1
 
 def dealer_cards(cards_dealt, player_list):
     dealer_score = 0
     dealer_hand = [cards_dealt[len(player_list)],cards_dealt[len(player_list)*2+1]]
-    print("------------------------------------------------------------------")
+    print("\n-------------------------------------------------------------------------------")
     print("\nDealers cards: " + dealer_hand[0][0] + " of " + dealer_hand[0][1] + " and " + dealer_hand[1][0] + " of " + dealer_hand[1][1])
     dealer_score = card_values(dealer_hand, dealer_score)
     return dealer_score

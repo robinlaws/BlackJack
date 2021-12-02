@@ -20,8 +20,8 @@ def play(player, deck):
     print("\nPlayer " + str(player[0]) + ": You have " + str(score))
     stop = 0
     while stop == 0:
-        deal = input("\nPress Y to hit. Press N to stay: ")
-        if deal.lower() == "y":
+        deal = input("\nHIT OR STAY: ")
+        if deal.lower() == "hit":
             card = deck[0]
             print(str(card[0]) + " of " + str(card[1]))
             deck.remove(card)
@@ -36,9 +36,11 @@ def play(player, deck):
             if score == 21:
                 print("BLACKJACK")
                 stop +=1
-        else:
+        elif deal.lower()=="stay":
             print("Stay at " + str(score))
             stop +=1
+        else:
+            print("Please enter a valid command.")
 
     return player
             
