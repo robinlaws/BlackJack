@@ -20,7 +20,7 @@ def deal_cards(deck, player_list):
     cards_dealt = []
 
 ##First cards dealt:
-    deal = input("\n----------------PRESS ENTER TO DEAL THE CARDS-----------------------")
+    deal = input("\n----------------PRESS ENTER TO DEAL FIRST CARD----------------------")
     for player in player_list:
         card = deck[0]
         print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
@@ -34,7 +34,7 @@ def deal_cards(deck, player_list):
 
 
 ##Second cards dealt:
-    deal = input("\n----------------PRESS ENTER TO DEAL SECOND CARD-----------------------")
+    deal = input("\n----------------PRESS ENTER TO DEAL SECOND CARD---------------------")
     for player in player_list:
         card = deck[0]
         print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
@@ -44,7 +44,7 @@ def deal_cards(deck, player_list):
     dealer_card = deck[0]
 
     print("\nDealers card: " + str(dealer_card[0]) + " of " + str(dealer_card[1]))
-    print("-------------------------------------------------------------------------------")
+    
     cards_dealt.append(dealer_card)
     deck.remove(dealer_card)
 
@@ -52,6 +52,7 @@ def deal_cards(deck, player_list):
     return cards_dealt
 
 def assign_cards(cards_dealt, player_list):
+    print("\n---------------------------SCORES------------------------------------\n")
     i = 0
     players = len(player_list)
     for player in player_list:
@@ -59,13 +60,14 @@ def assign_cards(cards_dealt, player_list):
         players+=1
         score = card_values(player_hand, player[2])
         player_list[i][2] = score
-        print("\nPlayer " + str(player[0]) + " Score: " + str(score))
+        
+        print("Player " + str(player[0]) + " Score: " + str(score))
         i+=1
 
 def dealer_cards(cards_dealt, player_list):
     dealer_score = 0
     dealer_hand = [cards_dealt[len(player_list)],cards_dealt[len(player_list)*2+1]]
-    print("\n-------------------------------------------------------------------------------")
+    print("\n-------------------------------------------------------------------------")
     print("\nDealers cards: " + dealer_hand[0][0] + " of " + dealer_hand[0][1] + " and " + dealer_hand[1][0] + " of " + dealer_hand[1][1])
     dealer_score = card_values(dealer_hand, dealer_score)
     return dealer_score

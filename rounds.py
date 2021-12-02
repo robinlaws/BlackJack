@@ -6,7 +6,7 @@ def round(deck, player_list):
     i=0
     for player in player_list:
         if player_list[i][2] == 21:
-            print("-------------------------------------------------------------------")
+            print("n-------------------------------------------------------------------")
             print("\nPLAYER " + str(i+1) + " HAS BLACKJACK")
 
         elif player_list[i][2] < 21:
@@ -16,7 +16,7 @@ def round(deck, player_list):
 
 def play(player, deck):
     score = int(player[2])
-    print("-------------------------------------------------------------------")
+    print("\n-------------------------LETS PLAY!---------------------------------")
     print("\nPlayer " + str(player[0]) + ": You have " + str(score))
     stop = 0
     while stop == 0:

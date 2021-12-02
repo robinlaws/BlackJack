@@ -6,7 +6,9 @@ number of placers and starting balance for all players. These will be stored
 in a list for each player : [player#, balance, score, bet]."""
 
 def menu():
-    print("-----------------------Welcome to BlackJack----------------------------")
+    print()
+    print("----------------------- Welcome to BlackJack ----------------------------")
+    print( "                            \u2660 \u2661 \u2662 \u2663")
     while True:
         rules = input("\nWould you like to see the rules before you play? (y/n): ")
         if rules.lower() == "y":
