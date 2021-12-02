@@ -1,4 +1,7 @@
+import time
+
 def dealer_hand(dealer_score, deck):
+    time.sleep(0.5)
     if dealer_score >= 17:
         print("\nDealer will STAY at " + str(dealer_score))
     while dealer_score < 17:
@@ -10,6 +13,7 @@ def dealer_hand(dealer_score, deck):
         deck.remove(card)
         if dealer_score > 21:
             print("The dealer has BUSTED.")
+        time.sleep(0.5)
     print("-----------------------------------------------------------")
     print("\nDealer score is: " + str(dealer_score))
     return dealer_score

@@ -7,8 +7,8 @@ in a list for each player : [player#, balance, score, bet]."""
 
 def menu():
     print()
-    print("----------------------- Welcome to BlackJack ----------------------------")
-    print( "                            \u2660 \u2661 \u2662 \u2663")
+    print("----------------------- Welcome to BlackJack -----------------------")
+    print( "                             \u2660 \u2661 \u2662 \u2663")
     while True:
         rules = input("\nWould you like to see the rules before you play? (y/n): ")
         if rules.lower() == "y":
@@ -39,7 +39,7 @@ def get_players():
     while True:
         try:
             players = int(input("\n\nPlease enter the number of players (1-5): "))
-            if players > 5 or players < 0:
+            if players > 5 or players <= 0:
                 print("Please enter a number between 1 and 5.")
                 continue
             else:
@@ -51,7 +51,7 @@ def get_players():
 def get_balance():
     while True:
         try:
-            balance = int(input("\nPlease enter starting balance for players (1-1000): "))
+            balance = int(input("\nPlease enter starting balance for players (5-1000): "))
             if balance > 1000 or balance < 5:
                 print("Please enter a number between 5 and 1000.")
                 continue
@@ -93,11 +93,6 @@ def place_bets(player_list):
         player[1] = new_balance
         player.append(bet)
 
-
-
-
-        
-        
 
 def clear_players(player_list):
     for player in player_list:

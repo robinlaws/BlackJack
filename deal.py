@@ -2,6 +2,7 @@
 import random
 import rounds
 import menu
+import time
 
 number_list = ["Ace", "Two", "Three", "Four", "Five", "Six",
     "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
@@ -20,12 +21,14 @@ def deal_cards(deck, player_list):
     cards_dealt = []
 
 ##First cards dealt:
-    deal = input("\n----------------PRESS ENTER TO DEAL FIRST CARD----------------------")
+    deal = input("\n----------------PRESS ENTER TO DEAL FIRST CARDS---------------------")
     for player in player_list:
         card = deck[0]
         print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
+        time.sleep(0.5)
         cards_dealt.append(card)
         deck.remove(card)
+        
 
     dealer_card = deck[0]
     print("\nDealers card:  ?????????")
@@ -34,10 +37,11 @@ def deal_cards(deck, player_list):
 
 
 ##Second cards dealt:
-    deal = input("\n----------------PRESS ENTER TO DEAL SECOND CARD---------------------")
+    deal = input("\n----------------PRESS ENTER TO DEAL SECOND CARDS--------------------")
     for player in player_list:
         card = deck[0]
         print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
+        time.sleep(0.5)
         cards_dealt.append(card)
         deck.remove(card)
 
@@ -52,7 +56,7 @@ def deal_cards(deck, player_list):
     return cards_dealt
 
 def assign_cards(cards_dealt, player_list):
-    print("\n---------------------------SCORES------------------------------------\n")
+    print("\n------------------------------SCORES--------------------------------\n")
     i = 0
     players = len(player_list)
     for player in player_list:

@@ -5,6 +5,8 @@ import rounds
 import dealer
 import winner
 import sys
+import time
+
 
 
 def main():
@@ -38,21 +40,27 @@ def main():
     ##Update player list for players out of money
             player_list = winner.update_player_list(player_list)
             if len(player_list) == 0:
-                print("\n\nALL PLAYERS ARE OUT OF MONEY. Thanks for playing! Please gamble responsibly")
+                print("\n\nALL PLAYERS ARE OUT OF MONEY. Thanks for playing!\n***PLEASE GAMBLE RESPONSIBLY***")
                 sys.exit()
-
+            time.sleep(0.5)
             choice = input("\nMove to the next round? (y/n): ")
             menu.clear_bets(player_list)
             if choice.lower() == "n":
                 break
+            elif choice.lower() =="y":
+                continue
+            else:
+                print("Please choose yes or no.")
         new_game = input("\nWould you like to start a new game? (y/n) ")
         if new_game.lower() == "y":
             continue
         if new_game.lower() == "n":
             break
+        else:
+            print("Please choose yes or no.")
         
     print("\nThanks for playing BlackJack!")
-    print("We do not encourage gambling. PLEASE GAMBLE RESPONSIBLY")
+    print("We do not encourage gambling. \n***PLEASE GAMBLE RESPONSIBLY***")
 
     
 

@@ -1,12 +1,13 @@
 ##Round BlackJack
-
+import time
 """This module contains the first round where the player will hit or stay."""
 
 def round(deck, player_list):
     i=0
+    print("\n----------------------------LETS PLAY!-------------------------------")
     for player in player_list:
         if player_list[i][2] == 21:
-            print("n-------------------------------------------------------------------")
+            print("-------------------------------------------------------------------")
             print("\nPLAYER " + str(i+1) + " HAS BLACKJACK")
 
         elif player_list[i][2] < 21:
@@ -16,12 +17,14 @@ def round(deck, player_list):
 
 def play(player, deck):
     score = int(player[2])
-    print("\n-------------------------LETS PLAY!---------------------------------")
+    
+    time.sleep(0.5)
     print("\nPlayer " + str(player[0]) + ": You have " + str(score))
     stop = 0
     while stop == 0:
-        deal = input("\nHIT OR STAY: ")
-        if deal.lower() == "hit":
+        deal = input("\n(H)IT OR (S)TAY: ")
+        time.sleep(0.5)
+        if deal.lower() == "hit" or deal.lower() == "h":
             card = deck[0]
             print(str(card[0]) + " of " + str(card[1]))
             deck.remove(card)
@@ -36,9 +39,11 @@ def play(player, deck):
             if score == 21:
                 print("BLACKJACK")
                 stop +=1
-        elif deal.lower()=="stay":
+
+        elif deal.lower()=="stay" or deal.lower() == "s":
             print("Stay at " + str(score))
             stop +=1
+
         else:
             print("Please enter a valid command.")
 

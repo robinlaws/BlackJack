@@ -1,10 +1,14 @@
 ##calculate bets
+import time
+
 def get_player_points(player_list):
+    time.sleep(0.5)
     print()
     for player in player_list:
         print("Player " + str(player[0]) + " score: " + str(player[2]))
 
 def get_winner(player_list, dealer_score,players):
+    time.sleep(0.5)
     print("\n-----------------------------------------------------------")
     winner = 0
     if dealer_score == 21:
@@ -51,6 +55,8 @@ def get_winner(player_list, dealer_score,players):
             elif player[2] < 21 and dealer_score > 21:
                 print("\nPlayer " + str(player[0]) + " WINNER")
                 update_balance_win(player)
+    print("\n-----------------------------------------------------------")
+    
 
 def update_balance_tie(player):
     bet = player[3]
@@ -72,8 +78,8 @@ def update_balance_21(player):
     print("Balance: " + str(new_balance))
 
 def zero_balance(player):
-    if player[1] == 0:
-        print("You are out of the game, better luck next time!")
+    if player[1] < 5:
+        print("GAME 0VER, better luck next time!")
 
 def update_player_list(player_list):
     player_list = [player for player in player_list if player[1]!=0]
