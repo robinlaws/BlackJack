@@ -83,6 +83,5 @@ def zero_balance(player):
 
 def update_player_list(player_list):
     player_list = [player for player in player_list if player[1]  >= 5]
-    print(player_list)
     return player_list
 
