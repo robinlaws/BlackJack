@@ -23,8 +23,8 @@ def menu():
 
     
 def blackjack_rules():
-    print("\nBLACKJACK RULES")
-    print("Each participant attempts to beat the dealer by getting a count as close to 21 \nas possible, without going over 21.")
+    print("\n\t\t\tBLACKJACK RULES")
+    print("\nEach participant attempts to beat the dealer by getting a count as close to 21 \nas possible, without going over 21.")
     print("Ace can be worth 1 or 11, depending on your score. \nJack Queen King are worth 10. All other cards are number value.")
     print("\nPlace your bet. (Minimum bet is 5$. Maximum bet is 1000$).")
     print("\n\tIf the dealer has 21, all bets go to dealer.\n\tIf player has 21, you recieve 1.5 times your bet.")
@@ -33,12 +33,13 @@ def blackjack_rules():
     print("\tIf you go over 21, you bust and you lose your bet.\n\nOnce the round is complete, the dealer will flip their cards:")
     print("\tIf you are closer to 21 then the dealer then you WIN your bet.")
     print("\tIf the dealer is closer to 21 then you LOSE your bet.")
-    print("\n\n\t\t\tGOOD LUCK\n\n")
+    print("\n\n\t\t\t   GOOD LUCK")
+    print("\n--------------------------------------------------------------------")
 
 def get_players():
     while True:
         try:
-            players = int(input("\n\nPlease enter the number of players (1-5): "))
+            players = int(input("\nPlease enter the number of players (1-5): "))
             if players > 5 or players <= 0:
                 print("Please enter a number between 1 and 5.")
                 continue
@@ -86,7 +87,7 @@ def check_balance(player):
 
 def place_bets(player_list):
     print("\n----------------------PLACE YOUR BETS-------------------------------")
-    print("---------------------MINIMUM: 5 MAX: 1000---------------------------")
+    print("                   MINIMUM: 5 MAX: 1000")
     for player in player_list:
         bet = check_balance(player)
         new_balance = player[1] - bet
@@ -101,5 +102,3 @@ def clear_players(player_list):
 def clear_bets(player_list):
     for player in player_list:
         player.pop(3)
-
-

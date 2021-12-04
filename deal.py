@@ -71,7 +71,7 @@ def assign_cards(cards_dealt, player_list):
 def dealer_cards(cards_dealt, player_list):
     dealer_score = 0
     dealer_hand = [cards_dealt[len(player_list)],cards_dealt[len(player_list)*2+1]]
-    print("\n-------------------------------------------------------------------------")
+    print("\n--------------------------------------------------------------------")
     print("\nDealers cards: " + dealer_hand[0][0] + " of " + dealer_hand[0][1] + " and " + dealer_hand[1][0] + " of " + dealer_hand[1][1])
     dealer_score = card_values(dealer_hand, dealer_score)
     return dealer_score
@@ -118,8 +118,3 @@ def card_values(player_hand, points):
             total+=score
     i+=1
     return total
-
-
-
-    
-

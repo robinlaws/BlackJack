@@ -43,5 +43,3 @@ def card_values(card, dealer_score):
         return 9
     elif card == "Ten" or card == "Jack" or card == "Queen" or card == "King" :
         return 10
-                                
-        

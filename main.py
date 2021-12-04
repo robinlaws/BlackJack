@@ -43,6 +43,7 @@ def main():
                 print("\n\nALL PLAYERS ARE OUT OF MONEY. Thanks for playing!\n***PLEASE GAMBLE RESPONSIBLY***")
                 sys.exit()
             time.sleep(0.5)
+            print("\t\t\t" + str(len(player_list)) + " PLAYERS REMAIN")
             choice = input("\nMove to the next round? (y/n): ")
             menu.clear_bets(player_list)
             if choice.lower() == "n":
@@ -66,5 +67,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-            
-

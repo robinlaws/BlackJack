@@ -4,13 +4,14 @@ import time
 
 def round(deck, player_list):
     i=0
-    print("\n----------------------------LETS PLAY!-------------------------------")
+    print("\n\t\t\t   LETS PLAY!")
     for player in player_list:
         if player_list[i][2] == 21:
-            print("-------------------------------------------------------------------")
+            print("\n-------------------------------------------------------------------")
             print("\nPLAYER " + str(i+1) + " HAS BLACKJACK")
 
         elif player_list[i][2] < 21:
+            print("\n-------------------------------------------------------------------")
             player_list[i] = play(player_list[i], deck)
 
         i+=1
@@ -73,6 +74,3 @@ def round_card_values(card, player):
         return 9
     elif card == "Ten" or card == "Jack" or card == "Queen" or card == "King" :
         return 10
-
-
-            
