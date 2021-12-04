@@ -67,7 +67,6 @@ def get_player_list(players, balance):
     for i in range(0,players):
         player_list.append([i+1,balance,0])
     return player_list
-    
 
 def check_balance(player):
     i=0
@@ -84,7 +83,6 @@ def check_balance(player):
         except ValueError:
             print("Not a valid number.")
 
-
 def place_bets(player_list):
     print("\n----------------------PLACE YOUR BETS-------------------------------")
     print("                   MINIMUM: 5 MAX: 1000")
@@ -94,11 +92,9 @@ def place_bets(player_list):
         player[1] = new_balance
         player.append(bet)
 
-
-def clear_players(player_list):
-    for player in player_list:
-        player[2] == 0
-
 def clear_bets(player_list):
     for player in player_list:
         player.pop(3)
+        
+
+    

@@ -1,13 +1,11 @@
-## Blackjack card deck
 import random
-import rounds
-import menu
+
+
 import time
 
 number_list = ["Ace", "Two", "Three", "Four", "Five", "Six",
     "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
 suit_list = ["Hearts", "Diamonds", "Clubs", "Spades"]
-##suit_list =['\u2660', '\u2661', '\u2662', '\u2663']
 
 def fill_deck(deck):
     for number in number_list:
@@ -17,104 +15,71 @@ def fill_deck(deck):
 def shuffle(deck):
     random.shuffle(deck)
 
-def deal_cards(deck, player_list):
-    cards_dealt = []
 
-##First cards dealt:
-    deal = input("\n----------------PRESS ENTER TO DEAL FIRST CARDS---------------------")
+def deal_player_cards(deck, player_list,player_cards):
     for player in player_list:
         card = deck[0]
         print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
         time.sleep(0.5)
-        cards_dealt.append(card)
-        deck.remove(card)
-        
-
-    dealer_card = deck[0]
-    print("\nDealers card:  ?????????")
-    cards_dealt.append(dealer_card)
-    deck.remove(dealer_card)
-
-
-##Second cards dealt:
-    deal = input("\n----------------PRESS ENTER TO DEAL SECOND CARDS--------------------")
-    for player in player_list:
-        card = deck[0]
-        print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
-        time.sleep(0.5)
-        cards_dealt.append(card)
+        player_cards.append(card)
         deck.remove(card)
 
-    dealer_card = deck[0]
 
-    print("\nDealers card: " + str(dealer_card[0]) + " of " + str(dealer_card[1]))
-    
-    cards_dealt.append(dealer_card)
-    deck.remove(dealer_card)
+def deal_dealer_cards(deck, flag, dealer_cards):
+    card = deck[0]
+    dealer_cards.append(card)
+    deck.remove(card)
+    if flag == 1:
+        print("\nDealers card:  ?????????")
+    elif flag == 2:
+        print("\nDealers card: " + str(card[0]) + " of " + str(card[1]))
 
-
-    return cards_dealt
-
-def assign_cards(cards_dealt, player_list):
+def assign_cards(player_cards, dealer_cards, player_list):
     print("\n------------------------------SCORES--------------------------------\n")
-    i = 0
+    i=0
     players = len(player_list)
     for player in player_list:
-        player_hand = [cards_dealt[i], cards_dealt[players+1]]
-        players+=1
-        score = card_values(player_hand, player[2])
-        player_list[i][2] = score
-        
+        player_hand = [player_cards[i], player_cards[players]]
+        score = card_values(player_hand)
+        player[2] = score
         print("Player " + str(player[0]) + " Score: " + str(score))
         i+=1
+        players+=1
 
-def dealer_cards(cards_dealt, player_list):
-    dealer_score = 0
-    dealer_hand = [cards_dealt[len(player_list)],cards_dealt[len(player_list)*2+1]]
-    print("\n--------------------------------------------------------------------")
-    print("\nDealers cards: " + dealer_hand[0][0] + " of " + dealer_hand[0][1] + " and " + dealer_hand[1][0] + " of " + dealer_hand[1][1])
-    dealer_score = card_values(dealer_hand, dealer_score)
+    dealer_score = card_values(dealer_cards)
     return dealer_score
 
-
-def card_values(player_hand, points):
+    
+    
+def card_values(hand):
     total = 0
-    i = 0
-
-    for i in range(0,2):
-        if player_hand[i][0] == "Ace":
-            if points > 12:
-                score = 1
-                total+=score
-            else:
-                score = 11
-                total+=score
-        elif player_hand[i][0] == "Two":
-            score = 2
-            total+=score
-        elif player_hand[i][0] == "Three":
-            score = 3
-            total+=score
-        elif player_hand[i][0] == "Four":
-            score = 4
-            total+=score
-        elif player_hand[i][0] == "Five":
-            score = 5
-            total+=score
-        elif player_hand[i][0] == "Six":
-            score = 6
-            total+=score
-        elif player_hand[i][0] == "Seven":
-            score = 7
-            total+=score
-        elif player_hand[i][0] == "Eight":
-            score = 8
-            total+=score
-        elif player_hand[i][0] == "Nine":
-            score = 9
-            total+=score
-        elif player_hand[i][0] == "Ten" or player_hand[i][0] == "Jack" or player_hand[i][0] == "Queen" or player_hand[i][0] == "King" :
-            score = 10
-            total+=score
-    i+=1
+    aces_count = 0
+    for card in hand:
+        if card[0] == "Ace":
+            total+=11
+            aces_count += 1
+            while total > 21 and aces_count > 0:
+                total -= 10
+                aces_count -= 1
+        elif card[0] == "Two":
+            total+=2
+        elif card[0] == "Three":
+            total+=3
+        elif card[0] == "Four":
+            total+=4
+        elif card[0] == "Five":
+            total+=5
+        elif card[0] == "Six":
+            total+=6
+        elif card[0] == "Seven":
+            total+=7
+        elif card[0] == "Eight":
+            total+=8
+        elif card[0] == "Nine":
+            total+=9
+        elif card[0] == "Ten" or card[0] == "Jack" or card[0] == "Queen" or card[0] == "King" :
+            total+=10
     return total
+
+
+    

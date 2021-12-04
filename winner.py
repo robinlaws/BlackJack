@@ -1,4 +1,4 @@
-##calculate bets
+##WINNER BlackJack
 import time
 
 def get_player_points(player_list):
@@ -7,7 +7,7 @@ def get_player_points(player_list):
     for player in player_list:
         print("Player " + str(player[0]) + " score: " + str(player[2]))
 
-def get_winner(player_list, dealer_score,players):
+def get_winner(player_list, dealer_score):
     time.sleep(0.5)
     print("\n-----------------------------------------------------------")
     winner = 0
@@ -82,5 +82,7 @@ def zero_balance(player):
         print("GAME 0VER, better luck next time!")
 
 def update_player_list(player_list):
-    player_list = [player for player in player_list if player[1]!=0]
+    player_list = [player for player in player_list if player[1]  >= 5]
+    print(player_list)
     return player_list
+

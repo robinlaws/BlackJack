@@ -1,24 +1,29 @@
-##Round BlackJack
+##ROUNDS BlackJack
 import time
+import deal
 """This module contains the first round where the player will hit or stay."""
 
-def round(deck, player_list):
+def round(deck, player_list, player_cards):
     i=0
+    players = len(player_list)
+    print("\n--------------------------------------------------------------------")
     print("\n\t\t\t   LETS PLAY!")
     for player in player_list:
-        if player_list[i][2] == 21:
-            print("\n-------------------------------------------------------------------")
-            print("\nPLAYER " + str(i+1) + " HAS BLACKJACK")
+        if player[2] == 21:
+            print("\n--------------------------------------------------------------------")
+            print("\nPLAYER " + str(player[0]) + " HAS BLACKJACK")
 
-        elif player_list[i][2] < 21:
-            print("\n-------------------------------------------------------------------")
-            player_list[i] = play(player_list[i], deck)
-
+        elif player[2] < 21:
+            print("\n--------------------------------------------------------------------")
+            player_hand = [player_cards[i], player_cards[players]]
+            score = play(player, deck, player_hand)
+            player[2] = score
         i+=1
+        players+=1
+    return player_list
 
-def play(player, deck):
+def play(player, deck, player_hand):
     score = int(player[2])
-    
     time.sleep(0.5)
     print("\nPlayer " + str(player[0]) + ": You have " + str(score))
     stop = 0
@@ -29,8 +34,8 @@ def play(player, deck):
             card = deck[0]
             print(str(card[0]) + " of " + str(card[1]))
             deck.remove(card)
-            points = int(round_card_values(card[0],player))
-            score+=points
+            player_hand.append(card)
+            score = card_values(player_hand)
             player[2] = score
             print("Total score: " + str(score))
 
@@ -47,30 +52,37 @@ def play(player, deck):
 
         else:
             print("Please enter a valid command.")
+    return player[2]
 
-    return player
-            
-def round_card_values(card, player):
-    if card == "Ace":
-        if player[2] > 12:
-            return 1
-        else:
-            return 11
-    elif card == "Two":
-        return 2
-    elif card == "Three":
-        return 3
-    elif card == "Four":
-        return 4
-    elif card == "Five":
-        return 5
-    elif card == "Six":
-        return 6
-    elif card == "Seven":
-        return 7
-    elif card == "Eight":
-        return 8
-    elif card == "Nine":
-        return 9
-    elif card == "Ten" or card == "Jack" or card == "Queen" or card == "King" :
-        return 10
+
+def card_values(hand):
+    total = 0
+    aces_count = 0
+    for card in hand:
+        if card[0] == "Ace":
+            total+=11
+            aces_count += 1
+            while total > 21 and aces_count > 0:
+                total -= 10
+                aces_count -= 1
+        elif card[0] == "Two":
+            total+=2
+        elif card[0] == "Three":
+            total+=3
+        elif card[0] == "Four":
+            total+=4
+        elif card[0] == "Five":
+            total+=5
+        elif card[0] == "Six":
+            total+=6
+        elif card[0] == "Seven":
+            total+=7
+        elif card[0] == "Eight":
+            total+=8
+        elif card[0] == "Nine":
+            total+=9
+        elif card[0] == "Ten" or card[0] == "Jack" or card[0] == "Queen" or card[0] == "King" :
+            total+=10
+    return total
+
+
