@@ -1,5 +1,6 @@
 import time
 
+
 def dealer_hand(dealer_score, deck, dealer_cards):
     print("\n--------------------------------------------------------------------")
     print("\nDealers cards: " + dealer_cards[0][0] + " of " + dealer_cards[0][1] + " and " + dealer_cards[1][0] + " of " + dealer_cards[1][1])
@@ -32,21 +33,21 @@ def card_values(hand):
                 total -= 10
                 aces_count -= 1
         elif card[0] == "Two":
-            total+=2
+            total += 2
         elif card[0] == "Three":
-            total+=3
+            total += 3
         elif card[0] == "Four":
-            total+=4
+            total += 4
         elif card[0] == "Five":
-            total+=5
+            total += 5
         elif card[0] == "Six":
-            total+=6
+            total += 6
         elif card[0] == "Seven":
-            total+=7
+            total += 7
         elif card[0] == "Eight":
-            total+=8
+            total += 8
         elif card[0] == "Nine":
-            total+=9
+            total += 9
         elif card[0] == "Ten" or card[0] == "Jack" or card[0] == "Queen" or card[0] == "King" :
-            total+=10
+            total += 10
     return total
