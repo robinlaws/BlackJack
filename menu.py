@@ -72,8 +72,8 @@ def get_player_list(players, balance):
 
 
 def check_balance(player):
-    i=0
-    while i==0:
+    i = 0
+    while i == 0:
         try:
             bet = int(input("\nPLAYER " + str(player[0]) + " Place your bet: "))
             if bet > player[1]:
@@ -82,7 +82,7 @@ def check_balance(player):
                 print("Bet value must be between 5 and 1000.")
             else:
                 return bet
-                i+=1
+                i += 1
         except ValueError:
             print("Not a valid number.")
 
