@@ -1,4 +1,4 @@
-##Blackjack Menu
+# Blackjack Menu
 
 import sys
 """This module containts the menu and rules for blackjack. It will also get
@@ -20,8 +20,7 @@ def menu():
         else:
             print("Please choose yes or no.")
 
-
-    
+  
 def blackjack_rules():
     print("\n\t\t\tBLACKJACK RULES")
     print("\nEach participant attempts to beat the dealer by getting a count as close to 21 \nas possible, without going over 21.")
@@ -36,6 +35,7 @@ def blackjack_rules():
     print("\n\n\t\t\t   GOOD LUCK")
     print("\n--------------------------------------------------------------------")
 
+    
 def get_players():
     while True:
         try:
@@ -49,6 +49,7 @@ def get_players():
         except ValueError:
             print("Not a valid number.")
 
+            
 def get_balance():
     while True:
         try:
@@ -62,11 +63,13 @@ def get_balance():
         except ValueError:
             print("Not a valid number.")
 
+            
 def get_player_list(players, balance):
     player_list = []
     for i in range(0,players):
         player_list.append([i+1,balance,0])
     return player_list
+
 
 def check_balance(player):
     i=0
@@ -83,6 +86,7 @@ def check_balance(player):
         except ValueError:
             print("Not a valid number.")
 
+            
 def place_bets(player_list):
     print("\n----------------------PLACE YOUR BETS-------------------------------")
     print("                   MINIMUM: 5 MAX: 1000")
@@ -92,6 +96,7 @@ def place_bets(player_list):
         player[1] = new_balance
         player.append(bet)
 
+        
 def clear_bets(player_list):
     for player in player_list:
         player.pop(3)
