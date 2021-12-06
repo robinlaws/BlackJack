@@ -30,7 +30,7 @@ def get_winner(players, dealer_hand):
                 print("\nPlayer " + str(index+1) + " WINS.")
                 player["balance"] += player["bet"]
                 print("Balance:", player["balance"])
-            if player_score == 21:
+            if player_score == 21 and player_score != dealer_score:
                 time.sleep(0.5)
                 print("\nPlayer " + str(index+1) + " HAS BLACKJACK.")
                 player["balance"] += player["bet"]*2
