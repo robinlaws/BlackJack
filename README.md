@@ -5,12 +5,18 @@
 deal, dealer, menu, rounds, winner
 
 VARIABLES:
-•	Player_list = LIST: [player number, balance, score, bet]
-•	Players = INT: number of players
-•	Deck = LIST: 2d list of cards 
-•	Cards_dealt = LIST: 2d list of cards that have been dealt. Only used in first round to assign values for the cards they get. 
-•	Dealer_score = INT: initial dealer score with first 2 cards
-•	Dealer_score_2 = INT: final dealer score
+
+Player_list = LIST: [player number, balance, score, bet]
+
+Players = INT: number of players
+
+Deck = LIST: 2d list of cards 
+
+Cards_dealt = LIST: 2d list of cards that have been dealt. Only used in first round to assign values for the cards they get. 
+
+Dealer_score = INT: initial dealer score with first 2 cards
+
+Dealer_score_2 = INT: final dealer score
 
 MENU MODULE:
 •	Menu – greeting, would you like to see the rules
@@ -54,7 +60,7 @@ Menu: get balance (all players will start with the same balance)
 Menu: Create player list (player#, balance, score)
 Menu: Place bets, update balance in player list
 
-*Deal: Fill deck
+Deal: Fill deck
 Deal: shuffle deck
 Deal: deal cards, create cards dealt list
 Deal: assign cards dealt to players and get score
