@@ -46,14 +46,14 @@ def play(player, deck):
 
 def dealer_round(dealer_hand, deck):
     time.sleep(0.5)
-    score = main.card_total(dealer_hand)
+    score = dealer.card_total(dealer_hand)
     if score >= 17:
         time.sleep(0.5)
         print("\nDealer will STAY at " + str(score))
     while score < 17:
         card = deck.pop()
         dealer_hand.append(card)
-        score = main.card_total(dealer_hand)
+        score = dealer.card_total(dealer_hand)
         time.sleep(0.5)
         print("\nDealer will HIT")
         time.sleep(0.5)
