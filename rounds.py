@@ -4,8 +4,8 @@ import dealer
 import deal
 
 def round(deck, players):
-    time.sleep(0.5)
-    print("\n                            LETS PLAY!")
+    print("\n---------------------------------------------------------------------")
+    print("\n                   $$$$     LETS PLAY!     $$$$")
     for index, player in enumerate(players):
         if dealer.card_total(player["hand"]) == 21:
             print("---------------------------------------------------------------------")
@@ -18,7 +18,6 @@ def round(deck, players):
                 score = dealer.card_total(player["hand"])
                 print("\n--------------------------------------------------------------------")
                 print("\nPlayer " + str(index+1) + ": You have " + str(score))
-                print(player)
                 play(player, deck)
 
 def play(player, deck):
@@ -47,7 +46,10 @@ def play(player, deck):
 def dealer_round(dealer_hand, deck):
     time.sleep(0.5)
     score = dealer.card_total(dealer_hand)
-    if score >= 17:
+    if score == 21:
+        time.sleep(0.5)
+        print("The dealer has BLACKJACK.")
+    if score >= 17 and score != 21:
         time.sleep(0.5)
         print("\nDealer will STAY at " + str(score))
     while score < 17:

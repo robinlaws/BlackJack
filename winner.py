@@ -12,7 +12,7 @@ def get_final_points(players, dealer_hand):
             score = dealer.card_total(player["hand"])
             print("Player " + str(index+1) + " score: " + str(score))
     dealer_score = dealer.card_total(dealer_hand)
-    print("Dealer score: " + str(dealer_score))
+    print("\nDealer score: " + str(dealer_score))
 
 def get_winner(players, dealer_hand):
     out_count = 0
