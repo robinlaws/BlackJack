@@ -19,26 +19,8 @@ def card_total(hand):
         total += 10    
     return total
 
-def next_round():
-    choice = input("\nMove to the next round? (y/n): ")
-    if choice.lower() == "n":
-        return False
-    elif choice.lower() =="y":
-        return True
-    else:
-        print("Please choose yes or no.")
-
-def new_game():
-    new_game = input("\nWould you like to start a new game? (y/n) ")
-    if new_game.lower() == "y":
-        return True
-    elif new_game.lower() == "n":
-        return False
-    else:
-        print("Please choose yes or no.")
-
 def main():
-    # Print rules, get players, get balance, get bet.
+##Print rules, get players, get balance.
     menu.menu()
     while True:
         players = menu.get_players()
@@ -48,39 +30,47 @@ def main():
             menu.reset_player_hands(players)
             menu.get_bet(players)
 
-    # Fill deck, shuffle deck, deal cards and get player scores.
+    ##Fill deck, shuffle deck, deal cards and get player scores
             deck = []
             dealer_hand = []
             deal.fill_deck(deck)
             deal.shuffle(deck)
-            deal.deal_cards(deck, players, dealer_hand)
-            deal.get_player_scores(players)       
-
-    # Go into round for player (hit or stay) then proceed to dealer round.
+            input("\n----------------PRESS ENTER TO DEAL FIRST CARDS---------------------")
+            deal.deal_player_cards(deck, players)
+            deal.deal_dealer_cards(dealer_hand, deck, 1)
+            input("\n----------------PRESS ENTER TO DEAL SECOND CARDS--------------------")
+            deal.deal_player_cards(deck, players)
+            deal.deal_dealer_cards(dealer_hand, deck, 2)
+            deal.get_player_scores(players)
+            
+    ##Go into round for player (hit or stay) then proceed to dealer round
             rounds.round(deck, players)
             deal.get_dealer_score(dealer_hand)
             rounds.dealer_round(dealer_hand, deck)
 
-    # Compare scores and get winners.
+    ##Compare scores and get winners
             winner.get_final_points(players, dealer_hand)
             winner.get_winner(players, dealer_hand)
 
-    # Options for progressing with game.         
+    ##Options for progressing with game           
             time.sleep(0.5)
-            if next_round() == True:
-                menu.get_player_count(players)
+            choice = input("\nMove to the next round? (y/n): ")
+            if choice.lower() == "n":
+                break
+            elif choice.lower() =="y":
                 continue
             else:
-                break
-        
-        if new_game()== True:
-            menu.get_player_count(players)
+                print("Please choose yes or no.")
+        new_game = input("\nWould you like to start a new game? (y/n) ")
+        if new_game.lower() == "y":
             continue
-        else: 
-            print("\nThanks for playing BlackJack!")
-            print("We do not encourage gambling. \n***PLEASE PLAY RESPONSIBLY***")
-            sys.exit()
+        if new_game.lower() == "n":
+            break
+        else:
+            print("Please choose yes or no.")
+        
+    print("\nThanks for playing BlackJack!")
+    print("We do not encourage gambling. \n***PLEASE GAMBLE RESPONSIBLY***")
 
 if __name__ == "__main__":
-    main()
-            
+    main()      
