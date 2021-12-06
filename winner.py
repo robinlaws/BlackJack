@@ -41,7 +41,7 @@ def get_winner(players, dealer_hand):
                 player["balance"] -= player["bet"]
                 print("Balance:", player["balance"])
                 if player["balance"] >=0 and player["balance"] < 5:
-                    print("You've run out of money. Better luck next time!")
+                    print("GAME OVER. Better luck next time!")
                     player["lose"] = True
                     out_count += 1
             if player_score == dealer_score and player_score <= 21:
@@ -50,5 +50,5 @@ def get_winner(players, dealer_hand):
                 print("Balance:", player["balance"])
     if out_count == len(players):
         print("\n--------------------------------------------------------------------")
-        print("\n\nALL PLAYERS ARE OUT OF MONEY. Thanks for playing!\n***PLEASE PLAY RESPONSIBLY***")
+        print("\nALL PLAYERS ARE OUT OF MONEY. Thanks for playing!\n***PLEASE PLAY RESPONSIBLY***")
         sys.exit()

@@ -18,23 +18,24 @@ def menu():
             print("Please choose yes or no.")
     
 def blackjack_rules():
-    print("\nBLACKJACK RULES")
-    print("Each participant attempts to beat the dealer by getting a count as close to 21 \nas possible, without going over 21.")
+    print("\n\t\t\tBLACKJACK RULES")
+    print("\nEach participant attempts to beat the dealer by getting a count as close to 21 \nas possible, without going over 21.")
     print("Ace can be worth 1 or 11, depending on your score. \nJack, Queen, and King are worth 10. All other cards are their number value.")
     print("\nPlace your bet. (Minimum bet is $5. Maximum bet is $1000).")
     print("\n\tIf the dealer has 21, all bets go to dealer.\n\tIf player has 21, they recieve double their bet.")
     print("\tIf both have 21, it is a tie and player keeps their bet.")
     print("\tIf none of this occurs, player may move into the next round. \n\nPlayer can hit for another card, or stay to keep current hand:")
-    print("\tIf you go over 21, you bust and you lose your bet.\n\nOnce the round is complete, the dealer will flip their cards:")
-    print("\tIf player is closer to 21 than the dealer, then player WINS their bet.")
+    print("\n\tIf you go over 21, you bust and you lose your bet.\n\nOnce the round is complete, the dealer will flip their cards:")
+    print("\n\tIf player is closer to 21 than the dealer, then player WINS their bet.")
     print("\tIf the dealer is closer to 21 then player LOSES their bet.")
     print("\tIf the player balance is less than 5, player is out of the game.")
-    print("\n\n\t\t\tGOOD LUCK\n\n")
+    print("\n\n\t\t\t   GOOD LUCK")
+    print("\n--------------------------------------------------------------------")
 
 def get_players():
     while True:
         try:
-            num_players = int(input("\n\nPlease enter the number of players (1-5): "))
+            num_players = int(input("\nPlease enter the number of players (1-5): "))
             if num_players > 5 or num_players <= 0:
                 print("Please enter a number between 1 and 5.")
                 continue
@@ -67,7 +68,7 @@ def get_balance(player_list):
 
 def get_bet(players):
     print("\n----------------------PLACE YOUR BETS-------------------------------")
-    print("---------------------MINIMUM: 5 MAX: 1000---------------------------")
+    print("                   MINIMUM: 5 MAX: 1000")
     player_count = 0
 
             
@@ -76,7 +77,7 @@ def get_bet(players):
             try:
                 if player["lose"] == True:
                     break
-                bet = int(input("\nPLAYER " + str(index+1) + " Place your bet: "))
+                bet = int(input("\nPLAYER " + str(index+1) + " BET: "))
                 if bet > player["balance"]:
                     print("You do not have enough to make this bet. Your current balance is: " + str(player["balance"]))
                 elif bet < 5 or bet > 1000:
@@ -99,7 +100,7 @@ def get_player_count(players):
             player_count += 1
     if player_count == 1:
         print()
-        print(str(player_count) + "PLAYER REMAINS!")
+        print("\t\t     " + str(player_count) + " PLAYER REMAINS!")
     else:
         print()
-        print(str(player_count) + "PLAYERS REMAIN!")
+        print("\t\t     " + str(player_count) + " PLAYERS REMAIN!")

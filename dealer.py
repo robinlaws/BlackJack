@@ -74,6 +74,7 @@ def main():
                 break
         
         if new_game()== True:
+            menu.get_player_count(players)
             continue
         else: 
             print("\nThanks for playing BlackJack!")
