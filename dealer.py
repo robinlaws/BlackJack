@@ -63,6 +63,7 @@ def main():
                 print("Please choose yes or no.")
         new_game = input("\nWould you like to start a new game? (y/n) ")
         if new_game.lower() == "y":
+            menu.get_player_count(players)
             continue
         if new_game.lower() == "n":
             break
