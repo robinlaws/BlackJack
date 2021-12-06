@@ -58,5 +58,5 @@ Deal: hit on lower then 17 and get dealer final score
 
 Winner: print player final points
 Winner: compare points and display winners.
-Play again? If yes, go to deal: fill deck
+Play again? If yes, go to deal and fill deck
 
