@@ -1,6 +1,6 @@
 # Module contains round where player & dealer hit or stay.
 import time
-import main
+import dealer
 import deal
 
 def round(deck, players):
