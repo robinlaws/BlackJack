@@ -17,34 +17,21 @@ def fill_deck(deck):
 def shuffle(deck):
     random.shuffle(deck)
 
-def deal_cards(deck, players, dealer_hand):
-    # First cards dealt:
-    print("\n----------------PRESS ENTER TO DEAL FIRST CARDS---------------------")
+def deal_player_cards(deck, players):
     for index,player in enumerate(players):
         if player["lose"] != True:
             card = deck.pop()
             print("\nPlayer " + str(index+1) + ": " + str(card[0]) + " of " + str(card[1]))
             time.sleep(0.5)
             player["hand"].append(card)
-        
-    dealer_hand.append(deck.pop())
-    print("\nDealers card:  ?????????")
 
-    # Second cards dealt:
-    time.sleep(0.5)
-    print("\n----------------PRESS ENTER TO DEAL SECOND CARDS--------------------")
-    for index, player in enumerate(players):
-        if player["lose"] != True:
-            card = deck.pop()
-            print("\nPlayer " + str(index+1) + ": " + str(card[0]) + " of " + str(card[1]))
-            time.sleep(0.5)
-            player["hand"].append(card)
-
-    dealer_card = deck.pop()
-
-    print("\nDealers card: " + str(dealer_card[0]) + " of " + str(dealer_card[1]))
-    
-    dealer_hand.append(dealer_card)
+def deal_dealer_cards(dealer_hand, deck, flag):
+    card = deck.pop()
+    dealer_hand.append(card)
+    if flag == 1:
+        print("\nDealers card:  ?????????")
+    elif flag ==2:
+        print("\nDealers card: " + str(card[0]) + " of " + str(card[0]))
 
 def get_player_scores(players):
     time.sleep(0.5)
