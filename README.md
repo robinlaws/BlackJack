@@ -42,21 +42,14 @@ Executes all modules for the game.
 
 GAMEPLAY:
 
-Menu: welcome, print rules yes or no
-Menu: get number of players
-Menu: get balance (all players will start with the same balance)
-Menu: Create player dict 
-Menu: Place bets
+Menu: welcome, print rules yes or no, get number of players, get balance (all players will start with the same balance),Create player dict, Place bets
 
-Deal: Fill deck
-Deal: shuffle deck
-Deal: deal cards, create cards dealt list
-Deal: assign cards dealt to players and get score
+Deal: Fill deck, shuffle deck, deal cards, assign cards dealt to players and get score
 
 Rounds: Play round for each player, hit or stay. Get final score.
+
 Deal: hit on lower then 17 and get dealer final score
 
-Winner: print player final points
-Winner: compare points and display winners.
+Winner: print player final points, compare points and display winners.
 Play again? If yes, go to deal and fill deck
 
