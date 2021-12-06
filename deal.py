@@ -1,10 +1,12 @@
+# Module fills and shuffles the deck, and deals cards to each player and the dealer. 
+# Module calculates and displays player and dealer scores.
 import random
-
-
+import menu
 import time
+import dealer
 
 number_list = ["Ace", "Two", "Three", "Four", "Five", "Six",
-                "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
+               "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
 suit_list = ["Hearts", "Diamonds", "Clubs", "Spades"]
 
 def fill_deck(deck):
@@ -15,71 +17,45 @@ def fill_deck(deck):
 def shuffle(deck):
     random.shuffle(deck)
 
+def deal_cards(deck, players, dealer_hand):
+    # First cards dealt:
+    print("\n----------------PRESS ENTER TO DEAL FIRST CARDS---------------------")
+    for index,player in enumerate(players):
+        if player["lose"] != True:
+            card = deck.pop()
+            print("\nPlayer " + str(index+1) + ": " + str(card[0]) + " of " + str(card[1]))
+            time.sleep(0.5)
+            player["hand"].append(card)
+        
+    dealer_hand.append(deck.pop())
+    print("\nDealers card:  ?????????")
 
-def deal_player_cards(deck, player_list,player_cards):
-    for player in player_list:
-        card = deck[0]
-        print("\nPlayer " + str(player[0]) + ": " + str(card[0]) + " of " + str(card[1]))
-        time.sleep(0.5)
-        player_cards.append(card)
-        deck.remove(card)
+    # Second cards dealt:
+    time.sleep(0.5)
+    print("\n----------------PRESS ENTER TO DEAL SECOND CARDS--------------------")
+    for index, player in enumerate(players):
+        if player["lose"] != True:
+            card = deck.pop()
+            print("\nPlayer " + str(index+1) + ": " + str(card[0]) + " of " + str(card[1]))
+            time.sleep(0.5)
+            player["hand"].append(card)
 
+    dealer_card = deck.pop()
 
-def deal_dealer_cards(deck, flag, dealer_cards):
-    card = deck[0]
-    dealer_cards.append(card)
-    deck.remove(card)
-    if flag == 1:
-        print("\nDealers card:  ?????????")
-    elif flag == 2:
-        print("\nDealers card: " + str(card[0]) + " of " + str(card[1]))
+    print("\nDealers card: " + str(dealer_card[0]) + " of " + str(dealer_card[1]))
+    
+    dealer_hand.append(dealer_card)
 
-def assign_cards(player_cards, dealer_cards, player_list):
+def get_player_scores(players):
+    time.sleep(0.5)
     print("\n------------------------------SCORES--------------------------------\n")
-    i=0
-    players = len(player_list)
-    for player in player_list:
-        player_hand = [player_cards[i], player_cards[players]]
-        score = card_values(player_hand)
-        player[2] = score
-        print("Player " + str(player[0]) + " Score: " + str(score))
-        i+=1
-        players+=1
+    for index, player in enumerate(players):
+        if player["lose"] != True:
+            score = dealer.card_total(player["hand"])
+            print("Player " + str(index+1) + " Score: " + str(score))
 
-    dealer_score = card_values(dealer_cards)
-    return dealer_score
-
-    
-    
-def card_values(hand):
-    total = 0
-    aces_count = 0
-    for card in hand:
-        if card[0] == "Ace":
-            total+=11
-            aces_count += 1
-            while total > 21 and aces_count > 0:
-                total -= 10
-                aces_count -= 1
-        elif card[0] == "Two":
-            total+=2
-        elif card[0] == "Three":
-            total+=3
-        elif card[0] == "Four":
-            total+=4
-        elif card[0] == "Five":
-            total+=5
-        elif card[0] == "Six":
-            total+=6
-        elif card[0] == "Seven":
-            total+=7
-        elif card[0] == "Eight":
-            total+=8
-        elif card[0] == "Nine":
-            total+=9
-        elif card[0] == "Ten" or card[0] == "Jack" or card[0] == "Queen" or card[0] == "King" :
-            total+=10
-    return total
-
-
-    
+def get_dealer_score(dealer_hand):
+    print("\n--------------------------------------------------------------------")
+    print("\nDealers cards: " + dealer_hand[0][0] + " of " + dealer_hand[0][1] + " and " + dealer_hand[1][0] + " of " + dealer_hand[1][1])
+    dealer_score = dealer.card_total(dealer_hand)
+    print("\nDealers score: " + str(dealer_score))
