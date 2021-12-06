@@ -31,7 +31,7 @@ def deal_dealer_cards(dealer_hand, deck, flag):
     if flag == 1:
         print("\nDealers card:  ?????????")
     elif flag ==2:
-        print("\nDealers card: " + str(card[0]) + " of " + str(card[0]))
+        print("\nDealers card: " + str(card[0]) + " of " + str(card[1]))
 
 def get_player_scores(players):
     time.sleep(0.5)

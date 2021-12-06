@@ -5,12 +5,12 @@ import deal
 
 def round(deck, players):
     time.sleep(0.5)
-    print("\n----------------------------LETS PLAY!------------------------------")
+    print("\n                            LETS PLAY!")
     for index, player in enumerate(players):
         if dealer.card_total(player["hand"]) == 21:
             print("---------------------------------------------------------------------")
             print("\nPLAYER " + str(index+1) + " HAS BLACKJACK")
-            print("---------------------------------------------------------------------")
+
 
         elif dealer.card_total(player["hand"]) < 21:
             if player["lose"] != True:  
