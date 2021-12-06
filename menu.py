@@ -68,6 +68,9 @@ def get_balance(player_list):
 def get_bet(players):
     print("\n----------------------PLACE YOUR BETS-------------------------------")
     print("---------------------MINIMUM: 5 MAX: 1000---------------------------")
+    player_count = 0
+
+            
     for index,player in enumerate(players):
         while True:
             try:
@@ -88,3 +91,15 @@ def get_bet(players):
 def reset_player_hands(players):
     for player in players:
         player["hand"] = []
+
+def get_player_count(players):
+    player_count = 0
+    for player in players:
+        if player["lose"] == None:
+            player_count += 1
+    if player_count == 1:
+        print()
+        print(str(player_count) + "PLAYER REMAINS!")
+    else:
+        print()
+        print(str(player_count) + "PLAYERS REMAIN!")
