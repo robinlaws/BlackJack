@@ -55,8 +55,13 @@ def main():
             dealer_hand = []
             deal.fill_deck(deck)
             deal.shuffle(deck)
-            deal.deal_cards(deck, players, dealer_hand)
-            deal.get_player_scores(players)       
+            input("\n----------------PRESS ENTER TO DEAL FIRST CARDS---------------------")
+            deal.deal_player_cards(deck, players)
+            deal.deal_dealer_cards(dealer_hand, deck, 1)
+            input("\n----------------PRESS ENTER TO DEAL SECOND CARDS--------------------")
+            deal.deal_player_cards(deck, players)
+            deal.deal_dealer_cards(dealer_hand, deck, 2)
+            deal.get_player_scores(players)  
 
     # Go into round for player (hit or stay) then proceed to dealer round.
             rounds.round(deck, players)
