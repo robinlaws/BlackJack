@@ -8,6 +8,7 @@ import time
 card_values = {"Ace": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5, "Six": 6, "Seven": 7,
          "Eight": 8, "Nine": 9, "Ten": 10, "Jack": 10, "Queen": 10, "King": 10}
 
+
 def card_total(hand):
     total = 0
     aces_count = 0
@@ -58,12 +59,13 @@ def main():
             if choice.lower() == "n":
                 break
             elif choice.lower() =="y":
+                menu.get_player_count(players)
                 continue
             else:
                 print("Please choose yes or no.")
+        
         new_game = input("\nWould you like to start a new game? (y/n) ")
         if new_game.lower() == "y":
-            menu.get_player_count(players)
             continue
         if new_game.lower() == "n":
             break

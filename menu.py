@@ -100,7 +100,9 @@ def get_player_count(players):
             player_count += 1
     if player_count == 1:
         print()
-        print("\t\t     " + str(player_count) + " PLAYER REMAINS!")
+        print("\t\t      " + str(player_count) + " PLAYER REMAINS!")
     else:
         print()
-        print("\t\t     " + str(player_count) + " PLAYERS REMAIN!")
+        print("\t\t      " + str(player_count) + " PLAYERS REMAIN!")
+
+
