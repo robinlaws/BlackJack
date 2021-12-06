@@ -1,87 +1,54 @@
-##WINNER BlackJack
+# Module contains logic for determining the winners by comparing player and dealer scores.
+# Module updates balance based on bet and results from score comparison.
 import time
+import dealer
+import sys
 
-def get_player_points(player_list):
+def get_final_points(players, dealer_hand):
     time.sleep(0.5)
-    print()
-    for player in player_list:
-        print("Player " + str(player[0]) + " score: " + str(player[2]))
+    print("\n---------------------------FINAL SCORES-----------------------------\n")
+    for index, player in enumerate(players):
+        if player["lose"] != True:
+            score = dealer.card_total(player["hand"])
+            print("Player " + str(index+1) + " score: " + str(score))
+    dealer_score = dealer.card_total(dealer_hand)
+    print("Dealer score: " + str(dealer_score))
 
-def get_winner(player_list, dealer_score):
-    time.sleep(0.5)
-    print("\n-----------------------------------------------------------")
-    winner = 0
-    if dealer_score == 21:
-        print("\nDEALER HAS BLACKJACK.")
-        for player in player_list:
-            if player[2] == 21:
-                print("\nPlayer " + str(player[0]) + " TIE")
-                update_balance_tie(player)
-            elif player[2] != 21:
-                print("\nPlayer " + str(player[0]) + " LOSES.")
-                zero_balance(player)
-                winner +=1
+def get_winner(players, dealer_hand):
+    out_count = 0
+    dealer_score = dealer.card_total(dealer_hand)
+    time.sleep(1)
+    input("\n-------------------PRESS ENTER TO VIEW RESULTS----------------------")
 
-
-    elif dealer_score != 21:
-        for player in player_list:
-            if player[2] == 21:
-                if dealer_score== 21:
-                    print("\nPlayer " + str(player[0]) + " TIE.")
-                    update_balance_tie(player)
-                else:
-                    print("\nPlayer " + str(player[0]) + " HAS BLACKJACK")
-                    update_balance_21(player)
-
-            elif player[2] < 21 and dealer_score < 21:
-                if 21 - player[2] < 21 - dealer_score:
-                    print("\nPlayer " + str(player[0]) + " WINNER")
-                    update_balance_win(player)
-
-                elif player[2] == dealer_score:
-                    print("\nPlayer " + str(player[0]) + " TIE.")
-                    update_balance_tie(player)
-
-                elif 21 - player[2] > 21 - dealer_score:
-                    print("\nPlayer " + str(player[0]) + " LOSES.")
-                    print("Balance: " + str(player[1]))
-                    zero_balance(player)
-
-            elif player[2] > 21:
-                print("\nPlayer " + str(player[0]) + " LOSES.")
-                print("Balance: " + str(player[1]))
-                zero_balance(player)
-
-            elif player[2] < 21 and dealer_score > 21:
-                print("\nPlayer " + str(player[0]) + " WINNER")
-                update_balance_win(player)
-    print("\n-----------------------------------------------------------")
-    
-
-def update_balance_tie(player):
-    bet = player[3]
-    new_balance = bet + player[1]
-    player[1] = new_balance
-    print("Balance: " + str(new_balance))
-
-
-def update_balance_win(player):
-    bet = player[3]
-    new_balance = (bet*2) + player[1]
-    player[1] = new_balance
-    print("Balance: " + str(new_balance))
-
-def update_balance_21(player):
-    bet=player[3]
-    new_balance = (bet*2.5) + player[1]
-    player[1] = new_balance
-    print("Balance: " + str(new_balance))
-
-def zero_balance(player):
-    if player[1] < 5:
-        print("GAME 0VER, better luck next time!")
-
-def update_player_list(player_list):
-    player_list = [player for player in player_list if player[1]  >= 5]
-    return player_list
-
+    for index, player in enumerate(players):
+        if player["lose"] == True:
+            out_count += 1
+        else:            
+            player_score = dealer.card_total(player["hand"])
+            if (dealer_score < player_score) and player_score < 21 or (dealer_score > 21 and player_score < 21):
+                time.sleep(0.5)
+                print("\nPlayer " + str(index+1) + " WINS.")
+                player["balance"] += player["bet"]
+                print("Balance:", player["balance"])
+            if player_score == 21:
+                time.sleep(0.5)
+                print("\nPlayer " + str(index+1) + " HAS BLACKJACK.")
+                player["balance"] += player["bet"]*2
+                print("Balance:", player["balance"])
+            if ((dealer_score > player_score) and dealer_score <= 21) or player_score > 21:
+                time.sleep(0.5)
+                print("\nPlayer " + str(index+1) + " LOSES.")
+                player["balance"] -= player["bet"]
+                print("Balance:", player["balance"])
+                if player["balance"] >=0 and player["balance"] < 5:
+                    print("You've run out of money. Better luck next time!")
+                    player["lose"] = True
+                    out_count += 1
+            if player_score == dealer_score and player_score <= 21:
+                time.sleep(0.5)
+                print("\nPlayer " + str(index+1) + " TIES.")
+                print("Balance:", player["balance"])
+    if out_count == len(players):
+        print("\n--------------------------------------------------------------------")
+        print("\n\nALL PLAYERS ARE OUT OF MONEY. Thanks for playing!\n***PLEASE PLAY RESPONSIBLY***")
+        sys.exit()

@@ -1,2 +1,1 @@
-# BlackJack-modules
- Python BlackJack
+# Blackjack
