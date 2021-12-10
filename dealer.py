@@ -4,10 +4,10 @@ import deal
 import rounds
 import winner
 import time
+import sys
 
 card_values = {"Ace": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5, "Six": 6, "Seven": 7,
          "Eight": 8, "Nine": 9, "Ten": 10, "Jack": 10, "Queen": 10, "King": 10}
-
 
 def card_total(hand):
     total = 0
@@ -19,6 +19,26 @@ def card_total(hand):
     if total < 12 and aces_count > 0:
         total += 10    
     return total
+
+def next_round():
+    while True:
+        choice = input("\nMove to the next round? (y/n): ")
+        if choice.lower() == "n":
+            return False
+        elif choice.lower() =="y":
+            return True
+        else:
+            print("Please choose yes or no.")
+
+def new_game():
+    while True:
+        new_game = input("\nWould you like to start a new game? (y/n): ")
+        if new_game.lower() == "y":
+            return True
+        elif new_game.lower() == "n":
+            return False
+        else:
+            print("Please choose yes or no.")
 
 def main():
 # Print rules, get players, get balance.
@@ -55,25 +75,17 @@ def main():
 
 # Options for progressing with game           
             time.sleep(0.5)
-            choice = input("\nMove to the next round? (y/n): ")
-            if choice.lower() == "n":
-                break
-            elif choice.lower() =="y":
-                menu.get_player_count(players)
-                continue
+            if next_round() == True:
+                  menu.get_player_count(players)
+                  continue
             else:
-                print("Please choose yes or no.")
-        
-        new_game = input("\nWould you like to start a new game? (y/n) ")
-        if new_game.lower() == "y":
+                  break
+        if new_game() == True:
             continue
-        if new_game.lower() == "n":
-            break
-        else:
-            print("Please choose yes or no.")
-        
-    print("\nThanks for playing BlackJack!")
-    print("We do not encourage gambling. \n***PLEASE GAMBLE RESPONSIBLY***")
+        else: 
+            print("\nThanks for playing BlackJack!")
+            print("We do not encourage gambling. \n***PLEASE PLAY RESPONSIBLY***")
+            sys.exit()   
 
 if __name__ == "__main__":
     main()      
